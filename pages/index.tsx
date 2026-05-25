@@ -1,18 +1,18 @@
+import type { GetServerSideProps } from 'next'
+
 import type { PageProps } from '@/lib/types'
 import { NotionPage } from '@/components/NotionPage'
 import { domain } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 
-export const getStaticProps = async () => {
+// Notion API はビルド時に失敗しやすいため、リクエスト時に取得する（SSR）
+export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   try {
     const props = await resolveNotionPage(domain)
 
-    return { props, revalidate: 10 }
+    return { props }
   } catch (err) {
     console.error('page error', domain, err)
-
-    // we don't want to publish the error version of this page, so
-    // let next.js know explicitly that incremental SSG failed
     throw err
   }
 }
