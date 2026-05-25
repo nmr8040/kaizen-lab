@@ -17,7 +17,12 @@ import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
 
-export const runtime = 'edge'
+// Edge だとフォント込みで 1MB 制限を超えるため Node.js ランタイムを使用
+export const config = {
+  api: {
+    responseLimit: false
+  }
+}
 
 export default async function OGImage(
   req: NextApiRequest,
