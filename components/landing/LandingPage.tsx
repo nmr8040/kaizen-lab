@@ -4,10 +4,16 @@ import * as React from 'react'
 import {
   ABOUT_TEXT,
   CAPABILITIES,
+  CTA,
   DEMOS,
+  FIELD_EXPERIENCE,
   FLOW_STEPS,
   NAV_LINKS,
+  OUTCOMES,
+  PRICING,
+  PRICING_NOTE,
   PROBLEMS,
+  REASSURANCE,
   SITE,
   SOLUTIONS
 } from '@/lib/landing-data'
@@ -143,20 +149,13 @@ export function LandingPage() {
               {menuOpen ? (
                 <path d='M6 6l12 12M6 18L18 6' />
               ) : (
-                <>
-                  <path d='M4 7h16M4 12h16M4 17h16' />
-                </>
+                <path d='M4 7h16M4 12h16M4 17h16' />
               )}
             </svg>
           </button>
           <nav className={`lp-nav ${menuOpen ? 'is-open' : ''}`}>
             {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className='lp-nav__link'
-                onClick={closeMenu}
-              >
+              <a key={link.href} href={link.href} className='lp-nav__link' onClick={closeMenu}>
                 {link.label}
               </a>
             ))}
@@ -167,6 +166,7 @@ export function LandingPage() {
         </div>
       </header>
 
+      {/* 1. Hero */}
       <section className='lp-hero'>
         <div className='lp-hero__bg'>
           <div className='lp-hero__grid' />
@@ -179,17 +179,38 @@ export function LandingPage() {
             現場のムダを、<em>データで見える化。</em>
           </h1>
           <p className='lp-hero__sub'>{SITE.description}</p>
+          <p className='lp-hero__experience'>{SITE.heroExperience}</p>
           <div className='lp-hero__actions'>
             <a href='#demos' className='lp-btn lp-btn--primary'>
               デモを見る
             </a>
             <a href='#contact' className='lp-btn lp-btn--outline'>
-              無料相談する
+              まずは相談する
             </a>
           </div>
         </div>
       </section>
 
+      {/* 2. 現場経験 */}
+      <section className='lp-section lp-section--highlight' id='experience'>
+        <div className='lp-container'>
+          <span className='lp-section__label'>強み</span>
+          <h2 className='lp-section__title'>{FIELD_EXPERIENCE.title}</h2>
+          <p className='lp-section__lead lp-section__lead--narrow'>{FIELD_EXPERIENCE.body}</p>
+          <div className='lp-skill-tags'>
+            {FIELD_EXPERIENCE.skills.map((skill) => (
+              <span key={skill} className='lp-skill-tag'>
+                <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
+                  <path d='M20 6L9 17l-5-5' />
+                </svg>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 課題 */}
       <section className='lp-section lp-section--alt' id='problems'>
         <div className='lp-container'>
           <span className='lp-section__label'>課題</span>
@@ -201,16 +222,20 @@ export function LandingPage() {
             {PROBLEMS.map((item, i) => {
               const Icon = PROBLEM_ICONS[i]!
               return (
-              <article key={item.title} className='lp-problem-card'>
-                <div className='lp-problem-card__icon'><Icon /></div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            )})}
+                <article key={item.title} className='lp-problem-card'>
+                  <div className='lp-problem-card__icon'>
+                    <Icon />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>
 
+      {/* 解決策 */}
       <section className='lp-section'>
         <div className='lp-container'>
           <span className='lp-section__label'>解決策</span>
@@ -230,12 +255,37 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className='lp-section lp-section--alt' id='capabilities'>
+      {/* 3. 導入後の変化 */}
+      <section className='lp-section lp-section--alt' id='outcomes'>
+        <div className='lp-container'>
+          <span className='lp-section__label'>メリット</span>
+          <h2 className='lp-section__title'>導入後に目指せる変化</h2>
+          <p className='lp-section__lead'>
+            ツール導入だけでなく、現場の業務改善につながる成果を重視します。
+          </p>
+          <div className='lp-outcomes'>
+            {OUTCOMES.map((item) => (
+              <article key={item.title} className='lp-outcome-card'>
+                <div className='lp-outcome-card__check'>
+                  <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5'>
+                    <path d='M20 6L9 17l-5-5' />
+                  </svg>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. できること */}
+      <section className='lp-section' id='capabilities'>
         <div className='lp-container'>
           <span className='lp-section__label'>サービス</span>
           <h2 className='lp-section__title'>できること</h2>
           <p className='lp-section__lead'>
-            現場の実務に即したツール開発・データ整備・見える化を提供します。
+            現場の実務に即した仕組みづくりで、改善につながる成果を目指します。
           </p>
           <div className='lp-capabilities'>
             {CAPABILITIES.map((item) => (
@@ -254,12 +304,13 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className='lp-section' id='demos'>
+      {/* 5. デモ */}
+      <section className='lp-section lp-section--alt' id='demos'>
         <div className='lp-container'>
           <span className='lp-section__label'>デモ</span>
-          <h2 className='lp-section__title'>デモサイト</h2>
+          <h2 className='lp-section__title'>実際に操作できるデモ</h2>
           <p className='lp-section__lead'>
-            実際に操作できるデモで、現場での使い方をイメージできます。
+            簡易デモを公開しています。実際の業務に合わせてカスタマイズ可能です。
           </p>
           <div className='lp-demos'>
             {DEMOS.map((demo) => (
@@ -268,6 +319,10 @@ export function LandingPage() {
                 <div className='lp-demo-card__body'>
                   <h3>{demo.title}</h3>
                   <p>{demo.description}</p>
+                  <p className='lp-demo-card__use'>
+                    <span className='lp-demo-card__use-label'>想定用途</span>
+                    {demo.useCase}
+                  </p>
                   <a
                     href={demo.url}
                     className='lp-btn lp-btn--accent'
@@ -283,6 +338,27 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* 6. 料金 */}
+      <section className='lp-section' id='pricing'>
+        <div className='lp-container'>
+          <span className='lp-section__label'>料金</span>
+          <h2 className='lp-section__title'>料金の目安</h2>
+          <p className='lp-section__lead'>
+            ココナラ経由でもご相談いただけます。まずはお気軽にお問い合わせください。
+          </p>
+          <div className='lp-pricing'>
+            {PRICING.map((item) => (
+              <article key={item.title} className='lp-price-card'>
+                <h3>{item.title}</h3>
+                <p className='lp-price-card__price'>{item.price}</p>
+              </article>
+            ))}
+          </div>
+          <p className='lp-pricing-note'>{PRICING_NOTE}</p>
+        </div>
+      </section>
+
+      {/* 自己紹介 */}
       <section className='lp-section lp-section--alt' id='about'>
         <div className='lp-container'>
           <span className='lp-section__label'>プロフィール</span>
@@ -304,6 +380,7 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* ご利用の流れ */}
       <section className='lp-section'>
         <div className='lp-container'>
           <span className='lp-section__label'>流れ</span>
@@ -323,21 +400,35 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* 7. 相談しやすさ */}
+      <section className='lp-section lp-reassurance'>
+        <div className='lp-container'>
+          <ul className='lp-reassurance-list'>
+            {REASSURANCE.map((text) => (
+              <li key={text}>
+                <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
+                  <circle cx='12' cy='12' r='10' />
+                  <path d='M12 16v-4M12 8h.01' />
+                </svg>
+                {text}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* 8. CTA */}
       <section className='lp-cta' id='contact'>
         <div className='lp-cta__inner'>
-          <h2>まずは小さな改善からご相談ください</h2>
-          <p>
-            Excel管理の効率化、データ集計、不良分析、人員配置など、現場に合わせた改善方法をご提案します。
-          </p>
+          <h2>{CTA.title}</h2>
+          <p>{CTA.body}</p>
           <a
-            href={`mailto:${SITE.email}?subject=【KAIZEN LAB】無料相談のお問い合わせ`}
+            href={`mailto:${SITE.email}?subject=【KAIZEN LAB】ご相談のお問い合わせ`}
             className='lp-btn lp-btn--primary'
           >
             メールで相談する
           </a>
-          <p style={{ marginTop: 20, fontSize: '0.875rem', opacity: 0.7 }}>
-            {SITE.email}
-          </p>
+          <p className='lp-cta__email'>{SITE.email}</p>
         </div>
       </section>
 
