@@ -22,8 +22,8 @@ export default function LogoPreviewPage() {
         </Link>
         <h1>KAIZEN LAB ロゴ候補</h1>
         <p>
-          製造業DX・現場改善向けのロゴ案です。採用中:{' '}
-          <strong>{ACTIVE_LOGO_VARIANT}</strong>（<code>lib/logo-config.ts</code> で変更）
+          現在は公式ロゴ画像（<code>/logo-kaizen-lab.png</code>）をサイトで使用中です。
+          以下は以前のSVG候補です。
         </p>
       </header>
 

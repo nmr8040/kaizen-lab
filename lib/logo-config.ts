@@ -1,5 +1,8 @@
+/** 公式ロゴ画像（public/logo-kaizen-lab.png）を使用中 */
+export const BRAND_LOGO_PATH = '/logo-kaizen-lab.png' as const
+
 /**
- * 採用するロゴパターン（候補は /logo-preview で比較）
+ * SVGロゴ候補（/logo-preview で比較・画像ロゴ未使用時のみ）
  * arrow | hexagon | chart | dashboard | line
  */
 export const ACTIVE_LOGO_VARIANT = 'arrow' as const

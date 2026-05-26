@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import * as React from 'react'
 
-import { KaizenLogo } from '@/components/landing/KaizenLogo'
+import { BrandLogo } from '@/components/landing/BrandLogo'
 import {
   ABOUT_TEXT,
   CAPABILITIES,
@@ -18,8 +18,6 @@ import {
   SITE,
   SOLUTIONS
 } from '@/lib/landing-data'
-import { ACTIVE_LOGO_VARIANT } from '@/lib/logo-config'
-
 function IconChart() {
   return (
     <svg width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='#0ea5e9' strokeWidth='2'>
@@ -131,14 +129,15 @@ export function LandingPage() {
         <meta property='og:title' content={`${SITE.name} | 現場のムダを、データで見える化。`} />
         <meta property='og:description' content={SITE.description} />
         <meta property='og:type' content='website' />
+        <meta property='og:image' content='/logo-kaizen-lab.png' />
         <meta name='twitter:card' content='summary_large_image' />
+        <meta name='twitter:image' content='/logo-kaizen-lab.png' />
       </Head>
 
       <header className={`lp-header ${scrolled ? 'is-scrolled' : ''}`}>
         <div className='lp-header__inner'>
           <a href='#' className='lp-logo' onClick={closeMenu}>
-            <KaizenLogo variant={ACTIVE_LOGO_VARIANT} size='sm' className='lp-logo__icon' />
-            {SITE.name}
+            <BrandLogo variant='header' />
           </a>
           <button
             type='button'
@@ -367,7 +366,7 @@ export function LandingPage() {
           <h2 className='lp-section__title'>自己紹介</h2>
           <div className='lp-about'>
             <div className='lp-about__visual'>
-              <KaizenLogo variant={ACTIVE_LOGO_VARIANT} size='lg' />
+              <BrandLogo variant='about' />
             </div>
             <div>
               <p className='lp-about__text'>{ABOUT_TEXT}</p>

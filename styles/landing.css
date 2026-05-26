@@ -72,27 +72,25 @@
 .lp-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: 0.02em;
-  color: var(--lp-navy);
-}
-
-.lp-logo__icon {
   flex-shrink: 0;
 }
 
-.kaizen-logo {
-  display: inline-flex;
-  flex-shrink: 0;
-  line-height: 0;
-}
-
-.kaizen-logo svg {
-  width: 100%;
-  height: 100%;
+.lp-brand-logo {
   display: block;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.lp-brand-logo--header {
+  height: 40px;
+  width: auto;
+  max-width: min(200px, 42vw);
+}
+
+.lp-brand-logo--about {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
 }
 
 .lp-nav {
@@ -865,31 +863,15 @@
 }
 
 .lp-about__visual {
-  aspect-ratio: 1;
   max-width: 320px;
+  padding: 32px 28px;
   border-radius: var(--lp-radius-lg);
-  background: linear-gradient(145deg, var(--lp-navy), var(--lp-blue));
+  background: var(--lp-surface);
+  border: 1px solid var(--lp-border);
+  box-shadow: var(--lp-shadow-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.lp-about__visual::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    transparent 40%,
-    rgba(14, 165, 233, 0.2) 100%
-  );
-}
-
-.lp-about__visual .kaizen-logo {
-  z-index: 1;
-  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
 }
 
 .lp-about__text {
