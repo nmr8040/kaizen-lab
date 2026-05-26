@@ -14,7 +14,8 @@ export default siteConfig({
   author: 'KAIZEN LAB',
 
   // open graph metadata (optional)
-  description: 'データ見える化で現場のムダを削減（中小製造業向け）',
+  description:
+    '製造業・物流現場向けに、Excel業務・不良分析・人員配置・日報集計などをDX化し、現場改善まで支援します。',
 
   // social usernames (optional)
   // twitter: '',
