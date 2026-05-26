@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import * as React from 'react'
 
+import { KaizenLogo } from '@/components/landing/KaizenLogo'
 import {
   ABOUT_TEXT,
   CAPABILITIES,
@@ -17,6 +18,7 @@ import {
   SITE,
   SOLUTIONS
 } from '@/lib/landing-data'
+import { ACTIVE_LOGO_VARIANT } from '@/lib/logo-config'
 
 function IconChart() {
   return (
@@ -135,7 +137,7 @@ export function LandingPage() {
       <header className={`lp-header ${scrolled ? 'is-scrolled' : ''}`}>
         <div className='lp-header__inner'>
           <a href='#' className='lp-logo' onClick={closeMenu}>
-            <span className='lp-logo__icon'>K</span>
+            <KaizenLogo variant={ACTIVE_LOGO_VARIANT} size='sm' className='lp-logo__icon' />
             {SITE.name}
           </a>
           <button
@@ -365,7 +367,7 @@ export function LandingPage() {
           <h2 className='lp-section__title'>自己紹介</h2>
           <div className='lp-about'>
             <div className='lp-about__visual'>
-              <span className='lp-about__initial'>K</span>
+              <KaizenLogo variant={ACTIVE_LOGO_VARIANT} size='lg' />
             </div>
             <div>
               <p className='lp-about__text'>{ABOUT_TEXT}</p>

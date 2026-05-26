@@ -14,6 +14,7 @@ import 'styles/notion.css'
 import 'styles/prism-theme.css'
 // KAIZEN LAB landing page
 import 'styles/landing.css'
+import 'styles/logo-preview.css'
 
 import type { AppProps } from 'next/app'
 import * as Fathom from 'fathom-client'
